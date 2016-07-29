@@ -1,0 +1,1 @@
+CREATE TABLE T_USER(userid VARCHAR(32), name VARCHAR(255), age INT8);

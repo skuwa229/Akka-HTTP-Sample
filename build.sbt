@@ -1,24 +1,34 @@
-me := "akka-http-standalone"
+name := """akka-http-sample"""
 
-version := "1.0"
+organization := "com.skuwa229"
+
+version := "0.0.1"
 
 scalaVersion := "2.11.8"
 
-scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-Xlint")
-
-assemblyOutputPath in assembly := file("./akka-http-standalone.jar")
+scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
 libraryDependencies ++= {
-  val akkaV = "2.4.7"
+  val akkaVersion = "2.4.7"
+
   Seq(
-    "com.typesafe.akka" %% "akka-actor" % akkaV,
-    "com.typesafe.akka" %% "akka-stream" % akkaV,
-    "com.typesafe.akka" %% "akka-http-experimental" % akkaV,
-    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaV,
-    "com.typesafe.akka" %% "akka-http-xml-experimental" % akkaV,
-    "com.typesafe.akka" %% "akka-http-testkit" % akkaV,
-    "org.skinny-framework" %% "skinny-orm"      % "2.1.2",
-    "postgresql" % "postgresql" % "9.1-901.jdbc4"
+    "com.typesafe.akka" %% "akka-http-core" % akkaVersion,
+    "com.typesafe.akka" %% "akka-http-experimental" % akkaVersion,
+    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaVersion,
+    "com.typesafe.akka" %% "akka-http-xml-experimental" % akkaVersion,
+    "org.skinny-framework" %% "skinny-orm" % "2.1.2",
+    "org.skinny-framework" %% "skinny-task" % "2.1.2",
+    "postgresql" % "postgresql" % "9.1-901.jdbc4",
+    "org.scalatest"     %% "scalatest" % "2.2.5" % "test",
+    "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
+    "ch.qos.logback"       %  "logback-classic"   % "1.1.+"
+  )
 }
 
-Revolver.settings
+// these commands will be executed when invoking `sbt console`
+initialCommands := """
+import scalikejdbc._
+import skinny.orm._
+skinny.DBSettings.initialize()
+implicit val dbSession = AutoSession
+"""
