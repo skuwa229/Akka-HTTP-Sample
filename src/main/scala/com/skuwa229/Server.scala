@@ -1,9 +1,7 @@
 package com.skuwa229
 
 import akka.actor.ActorSystem
-import akka.util.ByteString
 import akka.event.{Logging, LoggingAdapter}
-import akka.stream.scaladsl._
 import akka.stream.ActorMaterializer
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
@@ -14,7 +12,6 @@ import com.skuwa229.model.orm.{Tuser, TuserJsonProtocol}
 import spray.json._
 
 import scala.io.StdIn
-import scala.util.Random
 import model._
 import TuserJsonProtocol._
 
