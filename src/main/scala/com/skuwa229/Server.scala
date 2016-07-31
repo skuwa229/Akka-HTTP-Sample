@@ -47,9 +47,10 @@ object Server extends Const with SprayJsonSupport {
           }
         } ~
         path("user" / ".+".r) { id =>
-          val user = Tuser.findBy(sqls.eq(Tuser.defaultAlias.column("userid"),id)).get.toJson
-
-          complete(user)
+          Tuser.findBy(sqls.eq(Tuser.defaultAlias.column("userid"),id)) match {
+            case Some(u) => complete(u.toJson)
+            case None => complete(404, "Not found!")
+          }
         }
 
     val bindingFuture = Http().bindAndHandle(routes, httpInterface, httpPort)
