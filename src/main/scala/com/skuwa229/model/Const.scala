@@ -1,11 +1,11 @@
-package com.skuwa229
+package com.skuwa229.model
 
 import com.typesafe.config.ConfigFactory
 
 /**
-  * Created by shota.kuwahara on 2016/07/30.
+  * Created by shota.kuwahara on 2016/07/31.
   */
-trait Config {
+trait Const {
   private val config = ConfigFactory.load()
   private val httpConfig = config.getConfig("http")
 

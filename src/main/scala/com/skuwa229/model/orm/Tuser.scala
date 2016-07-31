@@ -1,4 +1,4 @@
-package com.skuwa229.model
+package com.skuwa229.model.orm
 
 import scalikejdbc._
 import skinny.orm._

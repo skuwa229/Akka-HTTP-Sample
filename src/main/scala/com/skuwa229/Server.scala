@@ -10,17 +10,18 @@ import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
 import akka.http.scaladsl.server.Directives._
 import scalikejdbc._
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
+import com.skuwa229.model.orm.{Tuser, TuserJsonProtocol}
 import spray.json._
 
 import scala.io.StdIn
 import scala.util.Random
 import model._
-import model.TuserJsonProtocol._
+import TuserJsonProtocol._
 
 /**
   * Created by shota.kuwahara on 2016/07/30.
   */
-object Server extends Config with SprayJsonSupport {
+object Server extends Const with SprayJsonSupport {
   implicit lazy val s = AutoSession
 
   def main(args: Array[String]) {
