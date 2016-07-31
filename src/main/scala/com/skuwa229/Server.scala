@@ -40,7 +40,7 @@ object Server extends Const with SprayJsonSupport {
         } ~
         path("userlist") {
           get {
-            complete(HttpEntity(ContentTypes.`text/html(UTF-8)`,Tuser.findAll().map(r=>r.toJson).mkString))
+            complete(HttpEntity(ContentTypes.`text/html(UTF-8)`,Tuser.findAll().map(r=>r.toJson).mkString("<br>")))
           }
         } ~
         path("user" / ".+".r) { id =>
