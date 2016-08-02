@@ -10,14 +10,15 @@ scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
 libraryDependencies ++= {
   val akkaVersion = "2.4.7"
+  val skinnyVersion = "2.1.2"
 
   Seq(
     "com.typesafe.akka" %% "akka-http-core" % akkaVersion,
     "com.typesafe.akka" %% "akka-http-experimental" % akkaVersion,
     "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaVersion,
     "com.typesafe.akka" %% "akka-http-xml-experimental" % akkaVersion,
-    "org.skinny-framework" %% "skinny-orm" % "2.1.2",
-    "org.skinny-framework" %% "skinny-task" % "2.1.2",
+    "org.skinny-framework" %% "skinny-orm" % skinnyVersion,
+    "org.skinny-framework" %% "skinny-task" % skinnyVersion,
     "postgresql" % "postgresql" % "9.1-901.jdbc4",
     "org.scalatest"     %% "scalatest" % "2.2.5" % "test",
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
